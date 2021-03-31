@@ -10,15 +10,15 @@ public class IfstatObservable {
 
         return Observable.create(emitter -> {
 
-                pb.redirectErrorStream(true);
-                Process process = pb.start();
-                InputStream processStdOutput = process.getInputStream();
-                Reader r = new InputStreamReader(processStdOutput);
-                BufferedReader br = new BufferedReader(r);
-                String line;
-                while ((line = br.readLine()) != null) {
-                    emitter.onNext(line);
-                }
+            pb.redirectErrorStream(true);
+            Process process = pb.start();
+            InputStream processStdOutput = process.getInputStream();
+            Reader r = new InputStreamReader(processStdOutput);
+            BufferedReader br = new BufferedReader(r);
+            String line;
+            while ((line = br.readLine()) != null) {
+                emitter.onNext(line);
+            }
 
             emitter.onComplete();
 
